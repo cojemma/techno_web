@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Add Songs</title>
+</head>
+<body>
+    <form action="/add/" method="post">
+    {% csrf_token %}
+    <div id="container">
+        <p>Enter the Song List URL(youtube)</p>
+        <input type="text" name="url">
+        <p>Enter how many of songs</p>
+        <input type="text" name="num">
+        <input type="submit" value="Enter">
+    </div>
+    </form>
+{% if messages %}
+<script>
+        {% for msg in messages %}
+            alert('{{ msg.message }}');
+        {% endfor %}
+</script>
+{% endif %}
+</body>
+</html>

@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Song List</title>
+    <style>
+        .container {
+        margin: 10px;
+        width: 80%;
+        }
+        .song {
+            color: black;
+            background-color: lightblue;
+            margin: auto;
+            line-height: 150%;
+            border-width: 3px;
+        }
+        .song>p {
+            font-size: 15pt;
+            margin: 3pt;
+            
+        }
+        .song>label {
+            font-size: 7pt;
+        }
+    </style>
+</head>
+<body>
+    <h1>Song List</h1>
+    <h3><a href="https://www.youtube.com/playlist?list=PLOcfOFh9YQcf1lVq_MYCMwu6bzD6__GUZ">Playlist</a></h3>
+    <h4><a href="/add/">Add from Playlist</a></h4>
+    <hr>
+    <div class="container">
+        {% for song in songs %}
+        <div class="song">
+            <p>{{song.name}}</p>
+            <label>made by:{{song.artist}}</label>
+        </div>
+        {% endfor %}
+    </div>
+{% if messages %}
+<script>
+        {% for msg in messages %}
+            alert('{{ msg.message }}');
+        {% endfor %}
+</script>
+{% endif %}
+</body>
+</html>
