@@ -3,10 +3,11 @@ from django.db import models
 # Create your models here.
 class SongManager(models.Manager):
     def savesong(self, name, artist='Unknown', type='Unknown'):
-        #print(f'Data:{name} {artist} {type}')
+        print(f'Data:{name} {artist} {type}')
         if len(Song.objects.filter(name=name)) > 0:
             return False
         else:
+            print('try to add')
             song = self.create(name=name, artist=artist, type=type)
         return song
 
