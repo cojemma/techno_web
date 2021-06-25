@@ -15,3 +15,4 @@ def analyzeTitle(title:str):
     title_data = re.split('[-–]', title, 2)
     title_data = [x.strip() for x in title_data]
     return title_data
+
