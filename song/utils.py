@@ -7,7 +7,7 @@ def getfromList(url, num=10):
         list = []
         for video in p.videos[:int(num)]:
             list += [f'{video.title}']
-        #print(list)
+        print(list)
         return list
     except:
         return None
