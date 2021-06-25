@@ -9,6 +9,7 @@ class SongManager(models.Manager):
         else:
             print('try to add')
             song = self.create(name=name, artist=artist, type=type)
+            print(song.name)
         return song
 
 class Song(models.Model):
