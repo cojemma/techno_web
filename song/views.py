@@ -15,6 +15,7 @@ def addsong(request):
             url = request.POST.get('url')
             num = request.POST.get('num')
             song_list = getfromList(url, int(num))
+            print(f'List:{song_list}')
             if song_list != None:
                 for song in song_list:
                     data = analyzeTitle(song)
