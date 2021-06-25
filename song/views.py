@@ -20,7 +20,9 @@ def addsong(request):
                     data = analyzeTitle(song)
                     name = data[1] if len(data) > 1 else data[0]
                     artist = data[0] if len(data) > 1 else 'Unknown'
+                    print('ready to add')
                     s = models.Song.objects.savesong(name=name, artist=artist)
+                    print('add')
                     data.clear()
                 messages.success(request, 'Success')
                 return HttpResponseRedirect('/')
