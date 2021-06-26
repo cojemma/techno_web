@@ -1,5 +1,6 @@
 from django.shortcuts import render
 import song.models as models
+from song.models import Song
 from song.utils import analyzeTitle, getfromList
 from django.http import HttpResponseRedirect, HttpRequest, HttpResponse
 from django.contrib import messages
@@ -23,8 +24,8 @@ def addsong(request):
                     print('ready to add')
                     try:
                         print(f'len:{len(models.Song.objects.filter(name=name))}')
-                        if len(models.Song.objects.filter(name=name)) == 0:
-                            ss = models.Song(name=name, artist=artist, type='techno')
+                        if len(Song.objects.filter(name=name)) == 0:
+                            ss = Song(name=name, artist=artist, type='techno')
                             ss.save()
                     except:
                         print('can\'t add')
