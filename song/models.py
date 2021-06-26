@@ -13,8 +13,8 @@ class SongManager(models.Manager):
         return song
 
 class Song(models.Model):
-    name = models.CharField(max_length=30)
-    artist = models.CharField(max_length=20)
+    name = models.CharField(max_length=100)
+    artist = models.CharField(max_length=50)
     type = models.CharField(max_length=20)
     objects = SongManager()
     def __str__(self):
