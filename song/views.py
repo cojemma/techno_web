@@ -21,8 +21,13 @@ def addsong(request):
                     name = data[1] if len(data) > 1 else data[0]
                     artist = data[0] if len(data) > 1 else 'Unknown'
                     print('ready to add')
-                    s = models.Song.objects.savesong(name=name, artist=artist)
-                    print('add')
+                    try:
+                        if len(models.Song.objects.filter(name=name)) == 0:
+                            ss = models.Song(name=name, artist=artist, type='techno')
+                            ss.save()
+                    except:
+                        print('can\'t add')
+                    #s = models.Song.objects.savesong(name=name, artist=artist)
                     data.clear()
                 messages.success(request, 'Success')
                 return HttpResponseRedirect('/')
