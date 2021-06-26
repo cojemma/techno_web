@@ -22,6 +22,7 @@ def addsong(request):
                     artist = data[0] if len(data) > 1 else 'Unknown'
                     print('ready to add')
                     try:
+                        print(f'len:{len(models.Song.objects.filter(name=name))}')
                         if len(models.Song.objects.filter(name=name)) == 0:
                             ss = models.Song(name=name, artist=artist, type='techno')
                             ss.save()
