@@ -29,7 +29,10 @@ def addsong(request):
                     #         ss.save()
                     # except:
                     #     print('can\'t add')
-                    s = models.Song.objects.savesong(name=name, artist=artist)
+                    try:
+                        s = models.Song.objects.savesong(name=name, artist=artist)
+                    except:
+                        print(f'can\'t add {name}')
                     data.clear()
                 messages.success(request, 'Success')
                 return HttpResponseRedirect('/')
