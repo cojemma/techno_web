@@ -3,17 +3,31 @@
 <head>
     <meta charset="UTF-8">
     <title>Song Intro</title>
+    <style>
+        .intro {
+            width: 80%;
+            background-color: rgb(28, 5, 65);
+            border-style: outset;
+            border-width: 5px;
+            border-color: black;
+            padding: 2px;
+            font-size: 20px;
+            color: rgb(255, 255, 250);
+        }
+    </style>
 </head>
 <body>
 <a href="/">Home</a>
 <h2>{{song.name}}</h2>
-<h3>Made by{{song.artist}}</h3>
+<h3>Made by:{{song.artist}}</h3>
 <hr>
 {% if not intro %}
 <h2>No Intro</h2>
 {% else %}
+<div class="intro">
 "{{intro.content}}"
 <h4>{{intro.date}}</h4>
+</div>
 {% endif %}
 </body>
 </html>
