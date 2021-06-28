@@ -1,6 +1,5 @@
 from django.shortcuts import render
 import song.models as models
-from song.models import Song
 from song.utils import analyzeTitle, getfromList
 from django.http import HttpResponseRedirect, HttpRequest, HttpResponse
 from django.contrib import messages
@@ -36,3 +35,11 @@ def addsong(request):
             return render(request, 'addsong.html')
     except:
         return HttpResponseRedirect('/')
+
+def intro(request):
+    song = models.Song.objects.filter(id=request.GET['id'])[0]
+    try:
+        intro = models.Intro.objects.filter(song=song)[0]
+    except:
+        print('No intro')
+    return render(request, 'song_intro.html', locals())

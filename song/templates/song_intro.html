@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Song Intro</title>
+</head>
+<body>
+<a href="/">Home</a>
+<h2>{{song.name}}</h2>
+<h3>Made by{{song.artist}}</h3>
+<hr>
+{% if not intro %}
+<h2>No Intro</h2>
+{% else %}
+"{{intro.content}}"
+<h4>{{intro.date}}</h4>
+{% endif %}
+</body>
+</html>
