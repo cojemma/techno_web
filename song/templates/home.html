@@ -38,6 +38,16 @@
     <h1>Song List</h1>
     <h3><a href="https://www.youtube.com/playlist?list=PLOcfOFh9YQcf1lVq_MYCMwu6bzD6__GUZ">Playlist</a></h3>
     <h4><a href="/add/">Add from Playlist</a></h4>
+    <form method="GET">
+        <input list="artist" name="artist" placeholder="select artist">
+        <datalist id="artist">
+            <option value="all" />
+            {% for artist in artists %}
+            <option value="{{artist}}" />
+            {% endfor %}           
+        </datalist>
+        <input type="submit" value="Enter">
+    </form>
     <hr>
     <div class="container">
         {% for song in songs %}

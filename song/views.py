@@ -6,6 +6,13 @@ from django.contrib import messages
 # Create your views here.
 def song_list(request):
     songs = models.Song.objects.all().order_by('id')
+    [song for song in songs]
+    artists = set([song.artist for song in songs])
+    if 'artist' in request.GET:
+        if request.GET['artist'] == 'all' or request.GET['artist'] == '':
+            return render(request, 'home.html', locals())
+        songs = songs.filter(artist=request.GET['artist'])
+        return render(request, 'home.html', locals())
     return render(request, 'home.html', locals())
 
 def addsong(request):
