@@ -22,4 +22,5 @@ urlpatterns = [
     re_path(r'^$', views.song_list),
     re_path(r'^add/$', views.addsong),
     re_path(r'^intro/$', views.intro),
+    re_path(r'^suggest/$', views.suggest),
 ]

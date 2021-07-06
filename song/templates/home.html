@@ -23,6 +23,15 @@
         .song>label {
             font-size: 7pt;
         }
+        .suggest_song {
+            float: right;
+            background-color: dimgray;
+            color: black;
+            border: darkgray;
+            border-width: 10px;
+            border-style: double;
+            margin: 5%;
+        }
     </style>
     <!-- Global site tag (gtag.js) - Google Analytics -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-TSPWX0F4RX"></script>
@@ -35,6 +44,12 @@
 </script>
 </head>
 <body>
+    <div class="suggest_song">
+    <h2>Random Suggest</h2>
+    <button style="float: right;" id="suggest"><img src="https://cdn.icon-icons.com/icons2/1898/PNG/512/reload_121122.png" style="width: 20px;"></button>
+    <strong>{{suggest_song.name}}</strong>
+    <span>{{suggest_song.artist}}</span>
+    </div>
     <h1>Song List</h1>
     <h3><a href="https://www.youtube.com/playlist?list=PLOcfOFh9YQcf1lVq_MYCMwu6bzD6__GUZ">Playlist</a></h3>
     <h4><a href="/add/">Add from Playlist</a></h4>
@@ -58,6 +73,21 @@
         </div>
         {% endfor %}
     </div>
+    <script
+    src="https://code.jquery.com/jquery-3.3.1.min.js"
+    integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+    crossorigin="anonymous"></script>
+    <script>
+        $(document).ready(function() {
+        $("#suggest").click(function() {
+            $.getJSON("/suggest/", function(song) {
+                $(".suggest_song>strong").text(song.name)
+                $(".suggest_song>span").text(song.artist)
+            })
+        })
+    })
+    </script>
+
 {% if messages %}
 <script>
         {% for msg in messages %}

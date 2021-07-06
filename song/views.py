@@ -1,13 +1,15 @@
 from django.shortcuts import render
 import song.models as models
 from song.utils import analyzeTitle, getfromList
-from django.http import HttpResponseRedirect, HttpRequest, HttpResponse
+from django.http import HttpResponseRedirect, HttpRequest, HttpResponse, JsonResponse
 from django.contrib import messages
+import random
 # Create your views here.
 def song_list(request):
     songs = models.Song.objects.all().order_by('id')
     [song for song in songs]
     artists = set([song.artist for song in songs])
+    suggest_song = songs[random.randint(0,len(songs)-1)]
     if 'artist' in request.GET:
         if request.GET['artist'] == 'all' or request.GET['artist'] == '':
             return render(request, 'home.html', locals())
@@ -50,3 +52,13 @@ def intro(request):
     except:
         print('No intro')
     return render(request, 'song_intro.html', locals())
+
+def suggest(request):
+    songs = models.Song.objects.all().order_by('id')
+    [song for song in songs]
+    suggest_song = songs[random.randint(0, len(songs) - 1)]
+    data = {
+        'name' : suggest_song.name,
+        'artist' : suggest_song.artist,
+    }
+    return JsonResponse(data)
